@@ -845,7 +845,9 @@ badge_map = {"numeric":"badge-numeric","categorical":"badge-categ",
              "datetime":"badge-datetime","boolean":"badge-bool","text":"badge-categ"}
 badge_label = {"numeric":"NUM","categorical":"CAT","datetime":"DATE","boolean":"BOOL","text":"TEXT"}
 badges_html = " ".join(
-    f"<span class='badge {badge_map.get(t,\"badge-categ\")}'>{col} [{badge_label.get(t,t)}]</span>"
+    "<span class='badge {}'>{} [{}]</span>".format(
+        badge_map.get(t, "badge-categ"), col, badge_label.get(t, t)
+    )
     for col, t in col_types.items()
 )
 st.markdown(badges_html, unsafe_allow_html=True)
